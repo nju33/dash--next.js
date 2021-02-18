@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "archive": "tar --exclude='.gitkeep' --exclude='.DS_Store' -cvzf nextjs.tgz nextjs.docset",
     "lerna": "lerna",
     "dev": "lerna run dev --stream --parallel",
     "dev2": "while true; do yarn --check-files && yarn dev; done",
@@ -144,5 +145,15 @@
   },
   "engines": {
     "node": ">= 10.13.0"
+  },
+  "dependencies": {
+    "capital-case": "1.0.4",
+    "ejs": "3.1.6",
+    "gray-matter": "4.0.2",
+    "jsdom": "16.4.0",
+    "marked": "2.0.0",
+    "mkdirp": "1.0.4",
+    "prismjs": "1.23.0",
+    "sqlite3": "5.0.2"
   }
 }

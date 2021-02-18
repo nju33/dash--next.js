@@ -1,6 +1,9 @@
 # build output
 dist
 .next
+nextjs.docset/**/*.html
+nextjs.docset/**/docSet.dsidx
+nextjs.tgz
 
 # dependencies
 node_modules
