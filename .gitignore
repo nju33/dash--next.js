@@ -4,6 +4,7 @@ dist
 nextjs.docset/**/*.html
 nextjs.docset/**/docSet.dsidx
 nextjs.tgz
+target
 
 # dependencies
 node_modules
@@ -25,6 +26,7 @@ test/**/out*
 test/**/next-env.d.ts
 .DS_Store
 /e2e-tests
+test/tmp/**
 
 # Editors
 **/.idea

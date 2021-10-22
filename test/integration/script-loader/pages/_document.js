@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <div id="text"></div>
+          <div id="text" />
         </body>
       </html>
     )

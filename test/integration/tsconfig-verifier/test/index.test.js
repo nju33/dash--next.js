@@ -1,11 +1,8 @@
 /* eslint-env jest */
 
-import { writeFile } from 'fs'
-import { createFile, exists, readFile, remove } from 'fs-extra'
+import { createFile, exists, readFile, writeFile, remove } from 'fs-extra'
 import { nextBuild } from 'next-test-utils'
 import path from 'path'
-
-jest.setTimeout(1000 * 60 * 5)
 
 describe('tsconfig.json verifier', () => {
   const appDir = path.join(__dirname, '../')
@@ -40,6 +37,7 @@ describe('tsconfig.json verifier', () => {
           \\"strict\\": false,
           \\"forceConsistentCasingInFileNames\\": true,
           \\"noEmit\\": true,
+          \\"incremental\\": true,
           \\"esModuleInterop\\": true,
           \\"module\\": \\"esnext\\",
           \\"moduleResolution\\": \\"node\\",
@@ -84,6 +82,7 @@ describe('tsconfig.json verifier', () => {
           \\"strict\\": false,
           \\"forceConsistentCasingInFileNames\\": true,
           \\"noEmit\\": true,
+          \\"incremental\\": true,
           \\"esModuleInterop\\": true,
           \\"module\\": \\"esnext\\",
           \\"moduleResolution\\": \\"node\\",
@@ -151,6 +150,7 @@ describe('tsconfig.json verifier', () => {
           \\"strict\\": false,
           \\"forceConsistentCasingInFileNames\\": true,
           \\"noEmit\\": true,
+          \\"incremental\\": true,
           \\"moduleResolution\\": \\"node\\",
           \\"resolveJsonModule\\": true,
           \\"isolatedModules\\": true,
@@ -199,6 +199,7 @@ describe('tsconfig.json verifier', () => {
           \\"strict\\": false,
           \\"forceConsistentCasingInFileNames\\": true,
           \\"noEmit\\": true,
+          \\"incremental\\": true,
           \\"moduleResolution\\": \\"node\\",
           \\"resolveJsonModule\\": true,
           \\"isolatedModules\\": true,
@@ -244,6 +245,7 @@ describe('tsconfig.json verifier', () => {
           \\"strict\\": false,
           \\"forceConsistentCasingInFileNames\\": true,
           \\"noEmit\\": true,
+          \\"incremental\\": true,
           \\"moduleResolution\\": \\"node\\",
           \\"resolveJsonModule\\": true,
           \\"isolatedModules\\": true,
@@ -282,6 +284,7 @@ describe('tsconfig.json verifier', () => {
           "strict": false,
           "forceConsistentCasingInFileNames": true,
           "noEmit": true,
+          "incremental": true,
           "esModuleInterop": true,
           "module": "esnext",
           "moduleResolution": "node",

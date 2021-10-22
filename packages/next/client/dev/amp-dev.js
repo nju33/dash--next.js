@@ -1,12 +1,7 @@
 /* globals __webpack_hash__ */
-import EventSourcePolyfill from './event-source-polyfill'
-import { getEventSourceWrapper } from './error-overlay/eventsource'
-import { setupPing } from './on-demand-entries-utils'
 import { displayContent } from './fouc'
-
-if (!window.EventSource) {
-  window.EventSource = EventSourcePolyfill
-}
+import initOnDemandEntries from './on-demand-entries-client'
+import { addMessageListener, connectHMR } from './error-overlay/websocket'
 
 const data = JSON.parse(document.getElementById('__NEXT_DATA__').textContent)
 let { assetPrefix, page } = data
@@ -37,13 +32,17 @@ async function tryApplyUpdates() {
     return
   }
   try {
-    const res = await fetch(`${hotUpdatePath}${curHash}.hot-update.json`)
+    const res = await fetch(
+      typeof __webpack_runtime_id__ !== 'undefined'
+        ? // eslint-disable-next-line no-undef
+          `${hotUpdatePath}${curHash}.${__webpack_runtime_id__}.hot-update.json`
+        : `${hotUpdatePath}${curHash}.hot-update.json`
+    )
     const jsonData = await res.json()
     const curPage = page === '/' ? 'index' : page
     // webpack 5 uses an array instead
-    const pageUpdated = (Array.isArray(jsonData.c)
-      ? jsonData.c
-      : Object.keys(jsonData.c)
+    const pageUpdated = (
+      Array.isArray(jsonData.c) ? jsonData.c : Object.keys(jsonData.c)
     ).some((mod) => {
       return (
         mod.indexOf(
@@ -68,9 +67,7 @@ async function tryApplyUpdates() {
   }
 }
 
-getEventSourceWrapper({
-  path: `${assetPrefix}/_next/webpack-hmr`,
-}).addMessageListener((event) => {
+addMessageListener((event) => {
   if (event.data === '\uD83D\uDC93') {
     return
   }
@@ -92,5 +89,6 @@ getEventSourceWrapper({
   }
 })
 
-setupPing(assetPrefix, () => page)
+connectHMR({ path: `${assetPrefix}/_next/webpack-hmr` })
 displayContent()
+initOnDemandEntries()
