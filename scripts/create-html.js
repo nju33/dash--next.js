@@ -125,6 +125,9 @@ util.apiReferenceNext.forEach((name) =>
 util.apiReferenceNextConfigJs.forEach((name) =>
   createDocPage(name, 'docs/api-reference/next.config.js')
 )
+util.apiRoutes.forEach((name) =>
+  createDocPage(name, 'docs/api-routes')
+)
 util.basicFeatures.forEach((name) => createDocPage(name, 'docs/basic-features'))
 util.migrating.forEach((name) => createDocPage(name, 'docs/migrating'))
 util.routing.forEach((name) => createDocPage(name, 'docs/routing'))

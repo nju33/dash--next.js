@@ -70,6 +70,13 @@ db.serialize(() => {
       `docs/api-reference/next.config.js/${name}.html`
     )
   })
+  util.apiRoutes.forEach((name) => {
+    stmt.run(
+      util.getTitle(`/docs/api-routes/${name}.md`),
+      'Guide',
+      `docs/api-routes/${name}.html`
+    )
+  })
   util.basicFeatures.forEach((name) => {
     stmt.run(
       util.getTitle(`/docs/basic-features/${name}.md`),

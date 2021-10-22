@@ -1,1 +1,1 @@
-exports.DOCSET_NAME = 'next.docset'
+exports.DOCSET_NAME = 'nextjs.docset'
